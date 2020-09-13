@@ -1,0 +1,22 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8888
+zuul:
+  ignored-headers: Access-Control-Allow-Origin,H-APP-Id,Token,APPToken
+  routes:
+    company-service:
+      path: /microservice_companydata/**
+      service-id: microservice_companydata
+    stockExchange-service:
+      path: /microservice_stockmarket/**
+      service-id: microservice_stockmarket
+    uploadExcel-service:
+      path: /microservice-spreadsheet/**
+      service-id: microservice_spreadsheet
+    user-service:
+      path: /microservice_logindata/**
+      service-id: microservice_logindata
+  sensitive-headers: Access-Control-Allow-Origin
